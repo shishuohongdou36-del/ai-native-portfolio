@@ -11,12 +11,12 @@ export const SECTION_IDS = {
 export type SectionId = (typeof SECTION_IDS)[keyof typeof SECTION_IDS]
 
 export const NAV_LINKS: Array<{ id: SectionId; label: string }> = [
-  { id: SECTION_IDS.about, label: "About" },
-  { id: SECTION_IDS.capabilities, label: "Capabilities" },
-  { id: SECTION_IDS.projects, label: "Projects" },
-  { id: SECTION_IDS.methodology, label: "Methodology" },
-  { id: SECTION_IDS.writing, label: "Writing" },
-  { id: SECTION_IDS.contact, label: "Contact" },
+  { id: SECTION_IDS.about, label: "关于" },
+  { id: SECTION_IDS.capabilities, label: "能力" },
+  { id: SECTION_IDS.projects, label: "作品" },
+  { id: SECTION_IDS.methodology, label: "方法论" },
+  { id: SECTION_IDS.writing, label: "写作" },
+  { id: SECTION_IDS.contact, label: "联系" },
 ]
 
 export const ACCENT_KEYS = ["cyan", "violet", "blue", "green"] as const

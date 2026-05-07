@@ -11,7 +11,7 @@ export function Footer() {
             {profile.name} <span className="ml-2 text-text-muted">— {profile.title}</span>
           </p>
           <p className="mt-1 text-[12px] text-text-muted">
-            © {new Date().getFullYear()} · Built as a digital experimental lab.
+            © {new Date().getFullYear()} · 一个数字实验室。
           </p>
         </div>
         <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px]">

@@ -169,21 +169,29 @@ e:/个人网站/
 
 The spec needs no SSR, no routing, no API routes. Vite ships a smaller toolchain, faster dev loop, simpler deploy, and avoids Next-specific abstractions that add no value here. Re-evaluable if `writing.ts` later evolves into MDX-powered articles (then migrate to Next App Router or Astro).
 
-### D2 — Hero Visual: R3F primary + Canvas2D fallback (Option A)
+### D2 — Hero Visual: Cinematic Typography Wall (rev. 3, 2026-05-07)
 
-Agent Node System is rendered with R3F because:
+**Original D2 (R3F + Canvas2D Agent Node System) is superseded.** Per spec §9.2 Option D / FR-170, Hero is now a typography-driven wall — zero 3D, zero canvas, zero dependency on WebGL.
 
-- True 3D depth + post-processing bloom communicates "control room" better than 2D.
-- R3F integrates cleanly with React lifecycle and lazy-loading.
-- drei's `Line`, `Points`, and `OrbitControls`-style camera idioms cover all needs.
+Reasons for the pivot:
 
-Fallback (`AgentNodeGraphFallback.tsx`) renders the same node/edge graph in Canvas2D — same data, same mouse interaction, no bloom. Activated when:
+- Phase 1 implementation revealed the Agent Node + dashboard chrome read as "AI demo console" rather than "personal studio". The Control Room metaphor was too literal.
+- Cinematic typography (à la Linear, Vercel, Read.cv) carries the same "premium / experimental studio" weight without WebGL cost or visual distraction from the copy.
+- Removes R3F from the critical path entirely → zero LCP risk, no fallback decision tree for the Hero subject.
 
-- WebGL context creation fails, OR
-- `prefers-reduced-motion: reduce`, OR
-- `performanceMode === 'static'` (low-FPS detection or low-end device).
+New approach:
 
-Both paths consume the same `capabilities.ts` data so node identity is stable across modes.
+- Hero subject = **massive responsive display type** (clamp 14–18vw for the name) using Space Grotesk Bold (already loaded) with extreme tracking (-0.04em).
+- Letter-by-letter stagger reveal on first paint (≤ 600ms total per FR-080 / §12.1 Level 3).
+- A single 1px mouse-tracking "scan beam" provides Level-2 feedback — implemented via Framer Motion `useMotionValue` + `useSpring`, no canvas.
+- Background = solid `bg-primary` + a faint SVG noise overlay + the existing `BackgroundField` accent glows (already shipped Phase 1).
+- The original `AgentNodeGraphFallback.tsx` component is **retained** but **unused by Hero**; it is reserved as a candidate visual anchor for Capability Map in Phase 3 (per spec FR-170-CAP).
+
+Performance mode mapping:
+
+- `full` — letter stagger + mouse scan beam + ambient backdrop drift active.
+- `reduced` — letter stagger collapses to single fade, scan beam disabled, backdrop drift disabled.
+- `static` — identical to `reduced` (no further degradation needed; there is no canvas to disable).
 
 ### D3 — Performance Mode State Machine
 
