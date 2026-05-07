@@ -1,0 +1,28 @@
+/* CSS custom properties — mirror tailwind.config.ts theme.extend.
+ * Keep these two files in sync. Spec §7.1 / §7.3 / §7.5.
+ */
+:root {
+  --color-bg-primary: #05070d;
+  --color-bg-secondary: #090d18;
+  --color-bg-elevated: #0e1424;
+
+  --color-surface-glass: rgba(255, 255, 255, 0.06);
+  --color-surface-glass-strong: rgba(255, 255, 255, 0.1);
+
+  --color-border-subtle: rgba(255, 255, 255, 0.12);
+  --color-border-active: rgba(69, 230, 255, 0.45);
+
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #a8b3c7;
+  --color-text-muted: #6f7a91;
+
+  --color-accent-cyan: #45e6ff;
+  --color-accent-violet: #8b5cff;
+  --color-accent-blue: #3b82f6;
+  --color-accent-green: #5fffb1;
+  --color-danger: #ff6b8a;
+
+  --motion-fast: 160ms;
+  --motion-medium: 320ms;
+  --motion-slow: 600ms;
+}

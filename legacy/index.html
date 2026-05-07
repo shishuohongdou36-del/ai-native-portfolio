@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>姚鑫 · 诗说红豆 — AI 产品与工程观测站</title>
+    <meta
+      name="description"
+      content="姚鑫（诗说红豆）的个人站点。关注 AI Agent 产品设计、Harness 工程与人机协作系统。"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2310100e'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23c9ff35' stroke-width='4'/%3E%3Cpath d='M32 12v40M12 32h40' stroke='%2342f5d7' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@300;400;600&family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="starfield" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"></div>
+    <div class="scroll-meter" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand magnetic" href="#top" aria-label="回到首页">
+        <span class="brand-mark">∴</span>
+        <span>诗说红豆</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a class="magnetic" href="#about">关于</a>
+        <a class="magnetic" href="#writing">文章</a>
+        <a class="magnetic" href="#projects">项目</a>
+        <a class="magnetic" href="#story">轨迹</a>
+        <a class="magnetic" href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">BUILD · WRITE · OBSERVE</p>
+          <h1>把复杂系统拆成可以触摸的光。</h1>
+          <p class="hero-lede">
+            我是姚鑫，写作时叫「诗说红豆」。这里收集我对 AI 产品与工程系统的思考、
+            技术文章和成长轨迹 — 一半是严谨的判断，一半是持续发光的好奇心。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary magnetic" href="#writing">阅读文章</a>
+            <a class="button ghost magnetic" href="#about">了解更多</a>
+          </div>
+        </div>
+
+        <div class="orbital-system reveal" aria-label="能力星图">
+          <div class="orbit orbit-one">
+            <span>AI 产品</span>
+          </div>
+          <div class="orbit orbit-two">
+            <span>工程系统</span>
+          </div>
+          <div class="orbit orbit-three">
+            <span>技术写作</span>
+          </div>
+          <div class="core">
+            <strong>YX</strong>
+            <small>2026</small>
+          </div>
+        </div>
+      </section>
+
+      <div class="thought-stream" aria-label="思考流">
+        <div class="thought-track">
+          <span>让智能在真实业务中稳定运行</span>
+          <span>·</span>
+          <span>写作是逼近清晰判断的方式</span>
+          <span>·</span>
+          <span>好的系统设计让人几乎感觉不到它的存在</span>
+          <span>·</span>
+          <span>控制权不是开关，是连续谱</span>
+          <span>·</span>
+          <span>不要把验证交给同一双眼睛</span>
+          <span>·</span>
+          <span>观测 · 构建 · 迭代</span>
+          <span>·</span>
+          <span>让智能在真实业务中稳定运行</span>
+          <span>·</span>
+          <span>写作是逼近清晰判断的方式</span>
+          <span>·</span>
+          <span>好的系统设计让人几乎感觉不到它的存在</span>
+          <span>·</span>
+          <span>控制权不是开关，是连续谱</span>
+          <span>·</span>
+          <span>不要把验证交给同一双眼睛</span>
+          <span>·</span>
+          <span>观测 · 构建 · 迭代</span>
+          <span>·</span>
+        </div>
+      </div>
+
+      <section class="signal-strip" aria-label="站点摘要">
+        <div>
+          <strong>2+</strong>
+          <span>深度长文</span>
+        </div>
+        <div>
+          <strong>3</strong>
+          <span>核心框架</span>
+        </div>
+        <div>
+          <strong>AI</strong>
+          <span>产品 × 工程</span>
+        </div>
+        <div>
+          <strong>∞</strong>
+          <span>探索半径</span>
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="section-kicker reveal">ABOUT ME</div>
+        <div class="section-heading reveal">
+          <h2>关于我</h2>
+          <p>不只是构建产品，更想理解「智能系统应该如何与人协作」。</p>
+        </div>
+
+        <div class="terminal-card reveal">
+          <div class="terminal-bar">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-title">yaoxin@observatory ~ %</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="t-prompt">$</span> <span class="t-cmd">whoami</span></p>
+            <p class="t-output">姚鑫 / 诗说红豆</p>
+            <p class="t-output t-dim">AI 产品设计 · Harness 工程 · 技术写作者</p>
+            <br/>
+            <p><span class="t-prompt">$</span> <span class="t-cmd">cat focus.md</span></p>
+            <p class="t-output">当模型足够聪明以后，我们到底该让它做多少事？</p>
+            <p class="t-output">这是我持续在探索的核心问题。</p>
+            <p class="t-output t-dim">→ AI Agent 的自主性控制谱系</p>
+            <p class="t-output t-dim">→ 从 Prompt 到 Context 到 Harness 的工程演进</p>
+            <p class="t-output t-dim">→ 人在回路中的位置：HITL / HOTL / HOOTL</p>
+            <br/>
+            <p><span class="t-prompt">$</span> <span class="t-cmd">cat belief.md</span></p>
+            <p class="t-output">"AI Coding 的效率不取决于模型的能力，</p>
+            <p class="t-output"> 而取决于所使用的架构是否支持多工作树、低冲突合并。"</p>
+            <br/>
+            <p><span class="t-prompt">$</span> <span class="t-cmd">ls skills/</span></p>
+            <p class="t-output">
+              <span class="t-tag">AI产品设计</span>
+              <span class="t-tag">Agent系统</span>
+              <span class="t-tag">Harness工程</span>
+              <span class="t-tag">RAG</span>
+              <span class="t-tag">人机协作</span>
+              <span class="t-tag">技术写作</span>
+            </p>
+            <br/>
+            <p><span class="t-prompt">$</span> <span class="t-cmd">echo $STATUS</span></p>
+            <p class="t-output"><span class="t-cursor">▋</span> 持续写作 · 持续构建 · 持续观测</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="writing" class="section writing">
+        <div class="section-kicker reveal">PUBLISHED ARTICLES</div>
+        <div class="section-heading reveal">
+          <h2>技术文章</h2>
+          <p>
+            把对 AI Agent 系统的观察沉淀为长文 — 不做概念搬运，只写经过反复琢磨的判断。
+          </p>
+        </div>
+
+        <div class="filter-bar reveal" role="tablist" aria-label="文章分类">
+          <button class="filter active" data-filter="all" type="button">全部</button>
+          <button class="filter" data-filter="agent" type="button">Agent 设计</button>
+          <button class="filter" data-filter="engineering" type="button">工程系统</button>
+        </div>
+
+        <div class="article-grid">
+          <a href="https://www.woshipm.com/ai/6389110.html" target="_blank" rel="noreferrer" class="article-card reveal" data-category="agent">
+            <span class="article-index">01</span>
+            <div>
+              <p class="tag">Agent 产品设计</p>
+              <h3>AI Agent 开始"自己干活"后，产品经理该如何重新设计控制权？</h3>
+              <p>从 HITL、HOTL 到 HOOTL 三种人机协作模式出发，讨论如何判断哪些环节必须人工确认、哪些只需监督、哪些可以完全自动化，以及如何把判断落成可解释、可观测、可审计的 Agent 产品架构。</p>
+            </div>
+            <time datetime="2025-05">2025.05</time>
+          </a>
+
+          <a href="https://www.woshipm.com/ai/6387770.html" target="_blank" rel="noreferrer" class="article-card reveal" data-category="engineering">
+            <span class="article-index">02</span>
+            <div>
+              <p class="tag">Harness 工程</p>
+              <h3>为什么模型越来越强，AI Coding 反而更依赖工程系统？</h3>
+              <p>AI Coding 的瓶颈正从模型能力转向工程环境设计。Harness Engineering 作为可运行、可约束、可验证、可演化的工程支架，将决定 AI Agent 能否稳定完成复杂任务。</p>
+            </div>
+            <time datetime="2025-05">2025.05</time>
+          </a>
+        </div>
+
+        <div class="article-more reveal">
+          <a class="button ghost magnetic" href="https://www.woshipm.com/u/1650187" target="_blank" rel="noreferrer">
+            查看全部文章 →
+          </a>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <div class="section-kicker reveal">THINKING FRAMEWORKS</div>
+        <div class="section-heading reveal">
+          <h2>核心思考</h2>
+          <p>
+            这些不是独立项目，而是我在文章中反复打磨的几个核心框架。它们构成了我观察 AI 系统的坐标系。
+          </p>
+        </div>
+
+        <div class="project-showcase">
+          <article class="project-card reveal tilt">
+            <div class="project-visual visual-a" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="project-copy">
+              <p class="tag">Agent Architecture</p>
+              <h3>Agent = Model + Harness</h3>
+              <p>模型像一匹能力很强的马，但没有马具、缰绳和骑手，它不会自动奔向业务目标。Harness 是 Agent 外侧的工程支架：环境、工具链、权限、状态、验证、观测与反馈。</p>
+              <ul>
+                <li>Prompt → Context → Harness</li>
+                <li>执行层</li>
+                <li>验证闭环</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card reveal tilt">
+            <div class="project-visual visual-b" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="project-copy">
+              <p class="tag">Human-AI Collaboration</p>
+              <h3>HITL / HOTL / HOOTL 控制谱系</h3>
+              <p>不是"人重要不重要"，而是"人的判断发生在什么时间点，以什么方式影响系统"。三种模式构成一条连续谱，帮助产品经理决定每一步 AI 动作的控制策略。</p>
+              <ul>
+                <li>预防 · 检测 · 自动化</li>
+                <li>控制权分配</li>
+                <li>可观测性</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card reveal tilt">
+            <div class="project-visual visual-c" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="project-copy">
+              <p class="tag">Engineering Philosophy</p>
+              <h3>工程过程的 Token 化边界</h3>
+              <p>AI 的能力边界不取决于模型本身，而取决于工程过程可被 token 化的范围。多工作树低冲突合并是执行层问题，工程 token 化是信息层问题，两者合在一起才是生产力基础。</p>
+              <ul>
+                <li>多工作树</li>
+                <li>低冲突合并</li>
+                <li>验证独立性</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="story" class="section story">
+        <div class="section-kicker reveal">TRAJECTORY</div>
+        <div class="section-heading reveal">
+          <h2>成长轨迹</h2>
+          <p>每一段经历都像一次重新校准坐标系 — 从实现功能，到设计系统，到思考控制权。</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <time>2025 —</time>
+            <h3>AI Agent 产品设计与写作</h3>
+            <p>聚焦 Agent 系统的控制权设计、Harness 工程方法论，在「人人都是产品经理」平台持续发表深度文章。</p>
+          </article>
+          <article class="timeline-item reveal">
+            <time>持续中</time>
+            <h3>构建个人思考框架</h3>
+            <p>从 HITL/HOTL/HOOTL 到四层控制回路，从 Prompt 到 Harness，不断打磨 AI 产品的系统性认知。</p>
+          </article>
+          <article class="timeline-item reveal">
+            <time>进行中</time>
+            <h3>技术观测与持续输出</h3>
+            <p>在变化极快的 AI 领域，保持独立判断。不做概念搬运，只写反复琢磨后的判断。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="contact-panel reveal">
+          <p class="eyebrow">TRANSMISSION OPEN</p>
+          <h2>如果你也在思考 AI 系统该如何与人协作，我们可以聊聊。</h2>
+          <div class="contact-links">
+            <a class="magnetic" href="https://www.woshipm.com/u/1650187" target="_blank" rel="noreferrer">人人都是产品经理</a>
+            <a class="magnetic" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+          <p class="contact-note">其他联系方式持续更新中 — 欢迎通过平台私信联系。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">∴ 诗说红豆 · 姚鑫</p>
+        <p class="footer-copy">观测 · 构建 · 写作</p>
+        <p class="footer-meta">© 2025 — 本站源码手工打造，不含模板。</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
