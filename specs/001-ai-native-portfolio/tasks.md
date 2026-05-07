@@ -5,17 +5,53 @@
 **Date**: 2026-05-07
 **Status**: Phase 1 + Phase 2 (rev. 3) + UI Tune + Typography + i18n landed on `main`. This document covers the **remaining** work — Phase 3 onward — plus retroactive setup tasks (tests, CI) that were skipped during the rapid prototyping pass.
 
+> **Last progress sync**: 2026-05-07 18:07 — see [Progress Status](#progress-status-2026-05-07) for current per-task state.
+
 ## Phase Map
 
-| Phase | Plan §13 | Status | Tasks |
-| --- | --- | --- | --- |
-| 1 — Foundation | shipped | ✅ | covered by PR #1 |
-| 2 — Hero Wow | shipped | ✅ | covered by PR #6 |
-| 3 — Section Interactions | partial | 🟡 | T010–T021 below |
-| 4 — Performance & A11y | not started | ❌ | T030–T046 below |
-| 5 — Optional Immersive | not started (optional) | ⚪ | T060–T065 below |
-| Cross-cutting / Setup | retroactive | 🟡 | T001–T009 below |
-| Content & Launch | not started | ❌ | T070–T078 below |
+| Phase | Plan §13 | Status | Tasks | Done / Total |
+| --- | --- | --- | --- | --- |
+| 1 — Foundation | shipped | ✅ | covered by PR #1 | — |
+| 2 — Hero Wow (rev. 3 Option D) | shipped | ✅ | covered by PR #6 | — |
+| Cross-cutting / Setup | retroactive | ❌ | T001–T006 | 0 / 6 |
+| Foundational tests | retroactive | ❌ | T007–T009 | 0 / 3 |
+| 3 — Section Interactions | partial | 🟡 | T010–T021 | 0 ✅ + 3 🟡 / 12 |
+| 4 — Performance & A11y | not started | ❌ | T030–T046 | 0 ✅ + 1 🟡 / 17 |
+| 5 — Optional Immersive | not started (optional) | ⚪ | T060–T065 | 0 / 6 |
+| Content & Launch | not started | ❌ | T070–T078 | 0 / 9 |
+
+## Progress Status (2026-05-07)
+
+### Done ✅
+
+None at strict-checklist level. Phase 1 + Phase 2 + UI tune + Bricolage typography + zh-Hans i18n shipped on `main` via PR #1 and PR #6, but those landed **before** this `tasks.md` was generated and are documented in the Phase Map row above (rather than as ticked checkboxes here).
+
+### Partial 🟡
+
+- **T016** — Methodology stagger reveal exists via per-row `<Reveal delay={0.05*i}>`, achieving the visual goal. Strict `staggerChildren` parent pattern not adopted; can be refactored without behaviour change.
+- **T017** — `CursorGlow` already consumes `useMotion().motionDisabled` (✅ done sub-clause). Touch suppression uses `useIsMobile` (`window.innerWidth < 768`) rather than `matchMedia('(pointer: coarse)')`; equivalent in practice for most devices but misses Surface / iPad-with-keyboard edge cases.
+- **T019** — `:focus-visible` global outline exists (`src/styles/globals.css`); however the channel-list `↗` arrow in `Contact.tsx` reveals only on `:hover`, not on `:focus-visible`. Keyboard users get the row hover-border but no arrow.
+- **T034** — Global `:focus-visible` rule provides visible focus rings (partial intent of the audit). Per-element contrast/visibility audit not yet performed.
+
+### Not started ❌
+
+- All Setup tasks (T001–T006): no test runner, no eslint config, no `.editorconfig`.
+- All Foundational tests (T007–T009).
+- Phase 3 remaining (9 of 12 tasks): T010 second hover layer, T011 motion-safe variants, T012 smoke E2E, T013 capability detail data + UI, T014 contract update, T015 AgentNodeGraph reattach to CapabilityMap, T018 writing card underline, T020 responsive E2E, T021 manual sign-off.
+- All Phase 4 except partial T034 (16 of 17 tasks).
+- All Phase 5 (6 tasks; optional).
+- All Phase F (9 tasks; 4 require owner input).
+
+### Tally
+
+| State | Count |
+| --- | --- |
+| ✅ Done | 0 |
+| 🟡 Partial | 4 |
+| ❌ Not started | 49 |
+| **Total** | **53** |
+
+> Phase 1 + Phase 2 + UI Tune + i18n + Typography (everything visible on `main` today) are tracked at the **Phase Map level** above, not by individual ticks here, because they predate this tasks.md.
 
 ---
 
@@ -61,11 +97,11 @@ Maps to spec §3 FR-031 / FR-042 / FR-180 / FR-181 / FR-182 and plan.md Phase 3 
 
 ### Methodology stagger reveal (US3)
 
-- [ ] **T016** [US3] In `src/components/sections/Methodology.tsx`, replace the current per-row `Reveal delay={0.05*i}` with a single `staggerChildren` parent so the 6 steps appear sequentially with 80ms cadence; cap total at 600ms (FR-080).
+- [ ] 🟡 **T016** [US3] In `src/components/sections/Methodology.tsx`, replace the current per-row `Reveal delay={0.05*i}` with a single `staggerChildren` parent so the 6 steps appear sequentially with 80ms cadence; cap total at 600ms (FR-080). _Status: visual goal already met via per-row Reveal; pattern refactor pending._
 
 ### Global cursor enhancement (US1)
 
-- [ ] **T017** [P] [US1] In `src/components/visuals/CursorGlow.tsx`, accept reduced-motion via `MotionContext` rather than a separate hook check; ensure the halo is suppressed on touch devices via `matchMedia('(pointer: coarse)')`.
+- [ ] 🟡 **T017** [P] [US1] In `src/components/visuals/CursorGlow.tsx`, accept reduced-motion via `MotionContext` rather than a separate hook check; ensure the halo is suppressed on touch devices via `matchMedia('(pointer: coarse)')`. _Status: MotionContext consumption ✅; touch suppression uses width-based `useIsMobile` instead of pointer-based query._
 
 ### Writing card hover (US3)
 
@@ -73,7 +109,7 @@ Maps to spec §3 FR-031 / FR-042 / FR-180 / FR-181 / FR-182 and plan.md Phase 3 
 
 ### Contact CTA hover (US4)
 
-- [ ] **T019** [P] [US4] In `src/components/sections/Contact.tsx`, the channel-list row already reveals `↗` on hover. Confirm focus-visible state shows the same arrow for keyboard users (a11y).
+- [ ] 🟡 **T019** [P] [US4] In `src/components/sections/Contact.tsx`, the channel-list row already reveals `↗` on hover. Confirm focus-visible state shows the same arrow for keyboard users (a11y). _Status: hover state ✅; focus-visible state still missing the arrow reveal._
 
 ### Phase 3 acceptance verification
 
@@ -95,7 +131,7 @@ Maps to spec FR-100/101/102/110/111 and SC-006.
 ### A11y suite
 
 - [ ] **T033** Create `tests/e2e/a11y.spec.ts` running `@axe-core/playwright` against each section landmark. Fail on serious / critical issues.
-- [ ] **T034** [P] Audit focus rings: ensure every interactive element (`MagneticButton`, `ExternalLink`, Navbar links, mobile menu items) has visible `focus-visible` outline meeting 3:1 contrast against the bg.
+- [ ] 🟡 **T034** [P] Audit focus rings: ensure every interactive element (`MagneticButton`, `ExternalLink`, Navbar links, mobile menu items) has visible `focus-visible` outline meeting 3:1 contrast against the bg. _Status: global `:focus-visible` rule exists in `globals.css`; per-element audit + contrast verification still owed._
 - [ ] **T035** [P] Add `prefers-reduced-motion` E2E in `tests/e2e/degradation.spec.ts` using `page.emulateMedia({ reducedMotion: 'reduce' })`. Verify `Reveal` collapses to 200ms fade and `ScanBeam` is hidden.
 - [ ] **T036** [P] Add WebGL-disabled run in `tests/e2e/degradation.spec.ts` (Playwright launch with `--disable-webgl`). Verify Hero still renders text first; AgentNodeGraphFallback (when reattached) shows its 2D path.
 - [ ] **T037** [P] Add JS-disabled assertion: fetch `/` with no JS, verify `<noscript>` block contains all seven section titles' equivalents.
