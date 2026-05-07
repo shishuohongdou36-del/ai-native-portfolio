@@ -11,6 +11,11 @@ dist/
 .env.*
 !.env.example
 
+# TypeScript build artifacts
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
 # Editor / OS
 .vscode/
 .idea/

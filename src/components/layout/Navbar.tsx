@@ -1,0 +1,105 @@
+import { useEffect, useState } from "react"
+import { NAV_LINKS, SECTION_IDS } from "@/lib/constants"
+import { profile } from "@/data/profile"
+import { cn } from "@/lib/cn"
+
+export function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-[backdrop-filter,background-color,border-color] duration-300",
+        scrolled
+          ? "border-b border-border-subtle bg-bg-primary/70 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
+      )}
+    >
+      <nav className="container-x flex h-16 items-center justify-between md:h-[72px]">
+        <a
+          href={`#${SECTION_IDS.hero}`}
+          className="group flex items-center gap-2.5"
+          aria-label="Back to top"
+        >
+          <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-md border border-border-subtle bg-bg-elevated text-accent-cyan">
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+              <circle cx="12" cy="12" r="3" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" strokeLinecap="round" />
+            </svg>
+          </span>
+          <span className="font-display text-sm font-medium tracking-wide text-text-primary">
+            {profile.name}
+            <span className="ml-2 hidden text-text-muted sm:inline">/ AI Native Builder</span>
+          </span>
+        </a>
+
+        <ul className="hidden items-center gap-7 md:flex">
+          {NAV_LINKS.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className="text-[13px] font-medium tracking-wide text-text-secondary transition-colors duration-200 hover:text-text-primary"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href={`#${SECTION_IDS.contact}`}
+          className="hidden rounded-full border border-accent-cyan/40 bg-accent-cyan/10 px-4 py-1.5 text-[12px] font-medium text-accent-cyan transition-colors duration-200 hover:bg-accent-cyan/20 md:inline-flex"
+        >
+          Get in touch
+        </a>
+
+        <button
+          type="button"
+          aria-label="Open menu"
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border-subtle text-text-secondary md:hidden"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+            {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
+      </nav>
+
+      {open && (
+        <div className="md:hidden border-t border-border-subtle bg-bg-primary/95 backdrop-blur-xl">
+          <ul className="container-x flex flex-col gap-1 py-4">
+            {NAV_LINKS.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-md px-3 py-2.5 text-sm text-text-secondary transition-colors hover:bg-surface-glass hover:text-text-primary"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href={`#${SECTION_IDS.contact}`}
+                onClick={() => setOpen(false)}
+                className="mt-2 block rounded-md border border-accent-cyan/40 bg-accent-cyan/10 px-3 py-2.5 text-sm text-accent-cyan"
+              >
+                Get in touch
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
+  )
+}
