@@ -29,15 +29,13 @@ export function Navbar() {
           className="group flex items-center gap-2.5"
           aria-label="Back to top"
         >
-          <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-md border border-border-subtle bg-bg-elevated text-accent-cyan">
-            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-              <circle cx="12" cy="12" r="3" />
-              <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" strokeLinecap="round" />
-            </svg>
+          <span className="relative inline-flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan/70" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" aria-hidden />
           </span>
-          <span className="font-display text-sm font-medium tracking-wide text-text-primary">
+          <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-text-primary">
             {profile.name}
-            <span className="ml-2 hidden text-text-muted sm:inline">/ AI Native Builder</span>
+            <span className="ml-3 hidden text-text-muted sm:inline">/ AI Native Builder</span>
           </span>
         </a>
 
