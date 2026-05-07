@@ -1,8 +1,18 @@
 # Requirements Quality Checklist — 001-ai-native-portfolio
 
 **Spec**: `../spec.md`
-**Validated**: 2026-05-07 (rev. 3 — Hero pivot to Option D Cinematic Typography Wall)
-**Result**: PASS WITH NOTE (Phase 1 shipped; Phase 2 in progress on Option D)
+**Validated**: 2026-05-07 (rev. 4 — Localization pivot to zh-Hans body)
+**Result**: PASS WITH NOTE (Phase 1+2+UI tune+typography shipped; localization in progress)
+
+## Rev. 4 Delta (Localization Pivot)
+
+- §5 Out of Scope original "v1 i18n excluded" line is overridden by owner's explicit ask.
+- New "Localization Pivot" annotation block before §7 enumerates the four English layers that intentionally remain (mono labels, Hero Latin display name, technical terms, brand identity terms).
+- FR-120 rewritten: placeholder copy now zh-Hans by default.
+- Tailwind `font.display` and `font.sans` chains add PingFang SC / HarmonyOS Sans SC / Microsoft YaHei fallbacks (no new web font network cost).
+- `<html lang>` → `zh-Hans`; OG locale → `zh_CN`.
+- No data-contract schema change; only string content swapped across `src/data/*`.
+- Constitution gates G1–G7 still PASS.
 
 ## Rev. 3 Delta (Hero Pivot)
 

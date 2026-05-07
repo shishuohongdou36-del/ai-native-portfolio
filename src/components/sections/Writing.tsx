@@ -3,10 +3,6 @@ import { writing } from "@/data/writing"
 import { Reveal } from "@/components/ui/Reveal"
 import { ExternalLink } from "@/components/ui/ExternalLink"
 
-/**
- * Writing — editorial article list. Replaces the 3-card grid with a vertical
- * list where each entry reads like a journal entry: tag · title · excerpt · link.
- */
 export function Writing() {
   return (
     <section id={SECTION_IDS.writing} className="py-section-y-m md:py-section-y-d">
@@ -20,16 +16,16 @@ export function Writing() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Methods,<br />
-                not hot takes.
+              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.15] tracking-[-0.02em] text-text-primary">
+                方法，<br />
+                而不是 hot take。
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-5 md:col-start-8">
             <Reveal delay={0.1}>
-              <p className="text-[16px] leading-[1.65] text-text-secondary md:text-[17px]">
-                Field notes from shipping AI products: workflows, evaluation loops, attribution playbooks, builder methodology.
+              <p className="text-[16px] leading-[1.8] text-text-secondary md:text-[17px]">
+                AI 产品交付过程中的实战笔记：工作流、评估闭环、归因 Playbook、Builder 方法论。
               </p>
             </Reveal>
           </div>
@@ -49,16 +45,16 @@ export function Writing() {
                     ))}
                   </div>
                   <div>
-                    <h3 className="font-display text-2xl font-medium leading-tight tracking-[-0.01em] text-text-primary transition-colors duration-300 group-hover:text-text-primary md:text-[28px]">
+                    <h3 className="font-display text-2xl font-medium leading-[1.3] tracking-[-0.01em] text-text-primary transition-colors duration-300 group-hover:text-text-primary md:text-[28px]">
                       {w.title}
                     </h3>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-text-secondary md:text-[16px]">
+                    <p className="mt-3 text-[15px] leading-[1.85] text-text-secondary md:text-[16px]">
                       {w.excerpt}
                     </p>
                   </div>
                   <div className="text-[12px]">
                     {w.url ? (
-                      <ExternalLink href={w.url}>Read</ExternalLink>
+                      <ExternalLink href={w.url}>阅读</ExternalLink>
                     ) : (
                       <span className="font-mono uppercase tracking-[0.22em] text-text-muted">
                         Soon

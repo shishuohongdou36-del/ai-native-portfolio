@@ -2,11 +2,6 @@ import { SECTION_IDS } from "@/lib/constants"
 import { methodology } from "@/data/methodology"
 import { Reveal } from "@/components/ui/Reveal"
 
-/**
- * Methodology — single-column editorial list with display numerals.
- * Reads as a sequenced manifesto. The order matters more than any single step,
- * so we render it vertically and let typography carry the weight.
- */
 export function Methodology() {
   return (
     <section id={SECTION_IDS.methodology} className="py-section-y-m md:py-section-y-d">
@@ -20,16 +15,16 @@ export function Methodology() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.05] tracking-[-0.02em] text-text-primary">
-                From ambiguity<br />
-                to product.
+              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.15] tracking-[-0.02em] text-text-primary">
+                从模糊，<br />
+                到产品。
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={0.1}>
-              <p className="text-[16px] leading-[1.65] text-text-secondary md:text-[17px]">
-                Six ordered moves I run every time, regardless of domain. The order matters more than any single step — skip one and the rest leak.
+              <p className="text-[16px] leading-[1.8] text-text-secondary md:text-[17px]">
+                六个有顺序的动作，每次都跑一遍 —— 不论领域。顺序比单一步骤更重要，跳过一步，其余的都会渗漏。
               </p>
             </Reveal>
           </div>
@@ -46,7 +41,7 @@ export function Methodology() {
                   <h3 className="font-display text-2xl font-medium leading-tight tracking-[-0.01em] text-text-primary md:text-3xl md:pt-3">
                     {m.title}
                   </h3>
-                  <p className="col-start-2 mt-3 max-w-2xl text-[16px] leading-[1.7] text-text-secondary md:col-start-3 md:mt-0 md:pt-4">
+                  <p className="col-start-2 mt-3 max-w-2xl text-[16px] leading-[1.85] text-text-secondary md:col-start-3 md:mt-0 md:pt-4">
                     {m.description}
                   </p>
                 </div>

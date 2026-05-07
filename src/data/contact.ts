@@ -9,18 +9,18 @@ export interface ContactChannel {
 }
 
 export const primaryCta = {
-  label: "Explore My Work",
+  label: "查看作品",
   href: `#${SECTION_IDS.projects}`,
 } as const
 
 export const secondaryCta = {
-  label: "View Methodology",
+  label: "查看方法论",
   href: `#${SECTION_IDS.methodology}`,
 } as const
 
 export const channels: readonly ContactChannel[] = [
   {
-    label: "Email",
+    label: "邮箱",
     value: profile.email,
     href: `mailto:${profile.email}`,
     kind: "email",

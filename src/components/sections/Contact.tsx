@@ -5,10 +5,6 @@ import { Reveal } from "@/components/ui/Reveal"
 import { MagneticButton } from "@/components/ui/MagneticButton"
 import { ExternalLink } from "@/components/ui/ExternalLink"
 
-/**
- * Contact — final, calm. Massive closing statement, two CTAs, a thin
- * channel list. No "signal_open" pill, no metric strips, no boxed cards.
- */
 export function Contact() {
   return (
     <section id={SECTION_IDS.contact} className="py-section-y-m md:py-section-y-d">
@@ -22,19 +18,20 @@ export function Contact() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.02] tracking-[-0.025em] text-text-primary">
-                Let's design AI systems that <span className="text-gradient-cyan-violet">decide and execute.</span>
+              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.1] tracking-[-0.025em] text-text-primary">
+                让我们一起，设计能<br />
+                <span className="text-gradient-cyan-violet">决策与执行</span>的 AI 系统。
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-6 max-w-md text-[17px] leading-[1.65] text-text-secondary">
-                Best for: B2B AI product design, agent and workflow systems, evaluation infrastructure, AI-coding-driven delivery.
+              <p className="mt-6 max-w-md text-[17px] leading-[1.8] text-text-secondary">
+                适合的方向：B 端 AI 产品设计、Agent 与工作流体系、评估基础设施、AI Coding 驱动的交付。
               </p>
             </Reveal>
             <Reveal delay={0.18}>
               <div className="mt-10 flex flex-wrap gap-3">
                 <MagneticButton href={`mailto:${profile.email}`} variant="primary">
-                  Email me
+                  发送邮件
                 </MagneticButton>
                 <MagneticButton href={profile.github} variant="secondary">
                   GitHub
@@ -69,8 +66,8 @@ export function Contact() {
               </ul>
             </Reveal>
             <Reveal delay={0.22}>
-              <p className="mt-10 max-w-sm font-mono text-[11px] uppercase leading-relaxed tracking-[0.22em] text-text-muted">
-                Currently based in {profile.location}. Open to remote and on-site collaborations across APAC and EU timezones.
+              <p className="mt-10 max-w-sm text-[14px] leading-[1.8] text-text-muted">
+                目前位于 {profile.location}。开放亚太与欧洲时区的远程或现场合作。
               </p>
             </Reveal>
           </div>

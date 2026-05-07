@@ -191,7 +191,7 @@
 
 #### Content & Branding
 
-- **FR-120**: 全部文案 MUST 使用占位英文文本，并以注释或显式标记标出可替换位置，便于站主后续填充真实内容。
+- **FR-120** (rev. 4, 2026-05-07): 全部正文文案 MUST 使用简体中文占位文本（zh-Hans），保留 §"Localization Pivot" 列出的四类英文层作为视觉节奏；所有内容 MUST 标记为占位以便站主后续替换。
 - **FR-121**: 站点 MUST NOT 使用参考站（Shoya Kajita Portfolio）的具体文案、图像、品牌色块、标志性布局结构。
 
 ### 3.2 Key Entities
@@ -243,6 +243,8 @@
 > **Addendum (2026-05-07)**: 自第 7 章起为补充增强内容，用于约束视觉一致性、工程结构、Hero 表达、动效层级、实现优先级与反模式。原 §1–§6 不变。本 SDD 在此处**有意降一层抽象**，将部分实现指引（颜色 token、目录结构、占位文案、阶段拆分）写入规格，作为对实现方的强约束；这是站主明确选择，非 SDD 默认做法。`plan.md` 在生成时 MUST 与这些约束保持一致，不得自行替换。
 
 > **Hero Pivot (2026-05-07, rev. 3)**: §9.2 增加 **Option D — Cinematic Typography Wall** 并设为新默认（FR-170 修订）。原因：Phase 1 实测显示 Agent Node System 偏 dashboard 感，与"Digital Experimental Lab"主题的克制气质冲突，且与 Shoya Kajita 风格并未形成有效区隔。Option D 走零-3D / 超大排版 / 极简光带路线，转向 *cinematic studio* 气质。`plan.md` D2 决策同步修订（移除 R3F 作为 Hero 必需依赖），`research.md` R2 增 R2-rev 注记。
+
+> **Localization Pivot (2026-05-07, rev. 4)**: §5 (Out of Scope) 原列"多语言（首版仅英文 + 必要中文标识）"被站主显式推翻。首版正文 MUST 为简体中文（zh-Hans），保留如下英文层作为视觉节奏：(1) 全部 mono 标签（eyebrow `0X — Name`、Hero meta strip、ticker 序号、卡片 `Case · 0X` / 模式串等）；(2) Hero 大字主体（站主拉丁名作 display 主体，Bricolage Grotesque 渲染）；(3) 技术 / 产品域名词（RAG / Multi-Agent / Workflow / Evaluation / AI Coding / Insurance AI 等）；(4) 品牌身份术语（AI Native Builder）。FR-120 同步修订：占位文案改为简体中文；display 字体链增加 PingFang SC / HarmonyOS Sans SC / Microsoft YaHei 系统字体回退（无新增网络字体资源）；`<html lang>` 改为 `zh-Hans`；OG locale 设 `zh_CN`。本修订为正文翻译 + 字体回退，不改变信息架构、不改动 `data/*` 契约 schema（仅替换字符串内容）。
 
 ---
 

@@ -10,11 +10,6 @@ const ACCENT_DOT: Record<string, string> = {
   green: "bg-accent-green",
 }
 
-/**
- * Capability Map — editorial table of contents.
- * Each capability is a row: numeral · name · description · accent dot.
- * Single column maximizes white space and reads like a magazine TOC.
- */
 export function CapabilityMap() {
   return (
     <section id={SECTION_IDS.capabilities} className="py-section-y-m md:py-section-y-d">
@@ -28,16 +23,16 @@ export function CapabilityMap() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Six surfaces<br />
-                I design across.
+              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.15] tracking-[-0.02em] text-text-primary">
+                我设计的<br />
+                六个能力面。
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <Reveal delay={0.1}>
-              <p className="text-[16px] leading-[1.65] text-text-secondary md:text-[17px]">
-                Each capability is a reusable lens — how I decompose problems, what I build, where I evaluate quality. They compose, they don't silo.
+              <p className="text-[16px] leading-[1.8] text-text-secondary md:text-[17px]">
+                每一项能力都是一把可复用的透镜 —— 我如何拆解问题、构建什么、在哪里评估质量。它们彼此组合，而非各自孤立。
               </p>
             </Reveal>
           </div>
@@ -63,7 +58,7 @@ export function CapabilityMap() {
                       {c.name}
                     </span>
                   </h3>
-                  <p className="col-start-2 text-[15px] leading-[1.65] text-text-secondary md:col-start-3 md:text-[16px] md:pt-2">
+                  <p className="col-start-2 text-[15px] leading-[1.8] text-text-secondary md:col-start-3 md:text-[16px] md:pt-2">
                     {c.description}
                   </p>
                 </div>

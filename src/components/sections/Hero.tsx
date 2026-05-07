@@ -8,8 +8,7 @@ import { NoiseOverlay } from "@/components/visuals/NoiseOverlay"
 
 /**
  * Hero — Cinematic Typography Wall (spec §9.2 Option D, FR-170 rev. 3).
- * Zero canvas, zero 3D. Subject is the typography itself; one mouse-tracking
- * scan beam carries Level-2 feedback. Reduced-motion collapses everything.
+ * 大字以 Latin 名（Bricolage Grotesque）承载视觉冲击；副标题、ticker、meta 用中文。
  */
 
 const splitChars = (input: string): string[] => Array.from(input)
@@ -72,9 +71,9 @@ function AnimatedHeading({ text, className }: { text: string; className?: string
 export function Hero() {
   const yearLabel = String(new Date().getFullYear())
   const tickerLines = [
-    "Designing AI systems that think, decide, and execute.",
-    "RAG · Multi-Agent · Workflow · Evaluation · AI Coding.",
-    "Insurance-grade AI, shipped.",
+    "设计能思考、决策、执行的 AI 系统。",
+    "RAG · Multi-Agent · Workflow · Evaluation · AI Coding。",
+    "保险级 AI，已在生产中。",
   ]
 
   return (
@@ -112,13 +111,13 @@ export function Hero() {
 
         <h1 className="font-display font-bold leading-[0.86] tracking-[-0.045em] text-text-primary">
           <span className="block text-[clamp(64px,15vw,200px)]">
-            <AnimatedHeading text="Yao" />
+            <AnimatedHeading text={profile.nameLatin.split(" ")[0]} />
           </span>
           <span className="block text-[clamp(64px,15vw,200px)] text-gradient-cyan-violet">
-            <AnimatedHeading text="Xin." />
+            <AnimatedHeading text={`${profile.nameLatin.split(" ")[1] ?? ""}.`} />
           </span>
-          <span className="mt-2 block text-[clamp(28px,5vw,72px)] font-medium leading-[1] tracking-[-0.025em] text-text-primary/85 md:mt-4">
-            <AnimatedHeading text="Builder of AI systems." />
+          <span className="mt-2 block font-sans text-[clamp(26px,5vw,60px)] font-medium leading-[1.1] tracking-[-0.015em] text-text-primary/85 md:mt-4">
+            <AnimatedHeading text="AI 系统的构建者。" />
           </span>
         </h1>
 
@@ -131,7 +130,7 @@ export function Hero() {
           {tickerLines.map((line, i) => (
             <p
               key={line}
-              className="text-[15px] leading-[1.5] text-text-secondary md:text-[17px]"
+              className="text-[15px] leading-[1.65] text-text-secondary md:text-[17px]"
             >
               <span className="mr-3 font-mono text-[10px] uppercase tracking-[0.3em] text-text-muted">
                 {String(i).padStart(2, "0")}
@@ -156,7 +155,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom strip — minimal, like a film slate */}
+      {/* Bottom strip */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -168,7 +167,9 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan/70" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-cyan" />
           </span>
-          Available for AI-native collaborations
+          <span className="normal-case tracking-normal text-[12px] text-text-secondary">
+            正在接受 AI 原生项目合作
+          </span>
         </span>
         <a
           href={`#${SECTION_IDS.about}`}
@@ -176,7 +177,7 @@ export function Hero() {
         >
           <span>Scroll</span>
           <span aria-hidden>↓</span>
-          <span className="hidden md:inline">/&nbsp;Begin</span>
+          <span className="hidden md:inline">/&nbsp;开始</span>
         </a>
         <span className="hidden md:inline">{profile.email}</span>
       </motion.div>

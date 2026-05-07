@@ -10,13 +10,13 @@ export interface Capability {
   accent: AccentKey
 }
 
-// Spec §10.3 — order is significant for the Hero AgentNodeGraph layout seed.
+// 顺序对 Hero 的 AgentNodeGraph 布局有意义；技术名词保留英文。
 export const capabilities: readonly Capability[] = [
   {
     id: "rag",
     name: "RAG",
     description:
-      "Designing retrieval-augmented systems that connect domain knowledge with reliable generation.",
+      "构建检索增强系统，把领域知识与可靠生成连接起来。",
     visualWeight: "core",
     accent: "cyan",
   },
@@ -24,7 +24,7 @@ export const capabilities: readonly Capability[] = [
     id: "multi-agent",
     name: "Multi-Agent",
     description:
-      "Structuring specialized agents around clear roles, tools, memory, and handoff logic.",
+      "围绕角色、工具、记忆与交接逻辑，组织专业化 Agent 协同。",
     visualWeight: "core",
     accent: "violet",
   },
@@ -32,7 +32,7 @@ export const capabilities: readonly Capability[] = [
     id: "workflow-design",
     name: "Workflow Design",
     description:
-      "Turning business processes into observable, controllable AI execution flows.",
+      "把业务流程转化为可观测、可控的 AI 执行流。",
     visualWeight: "core",
     accent: "blue",
   },
@@ -40,7 +40,7 @@ export const capabilities: readonly Capability[] = [
     id: "evaluation-loop",
     name: "Evaluation Loop",
     description:
-      "Building quality loops through test sets, bad case analysis, regression checks, and refinement.",
+      "通过测试集、Bad Case 分析、回归检查与持续打磨，建立质量闭环。",
     visualWeight: "supporting",
     accent: "green",
   },
@@ -48,7 +48,7 @@ export const capabilities: readonly Capability[] = [
     id: "ai-coding",
     name: "AI Coding",
     description:
-      "Using Claude Code, Codex, Windsurf, and AI-first tooling to accelerate prototyping and delivery.",
+      "用 Claude Code、Codex、Windsurf 等 AI-first 工具，加速原型与交付。",
     visualWeight: "supporting",
     accent: "cyan",
   },
@@ -56,7 +56,7 @@ export const capabilities: readonly Capability[] = [
     id: "insurance-ai",
     name: "Insurance AI",
     description:
-      "Applying large-model systems to customer service, underwriting, marketing, and sales enablement.",
+      "把大模型系统应用到客户服务、核保、营销内容与销售赋能。",
     visualWeight: "domain",
     accent: "violet",
   },

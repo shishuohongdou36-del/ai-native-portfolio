@@ -11,11 +11,6 @@ const ACCENT_GLOW: Record<string, string> = {
   green: "group-hover:border-accent-green/40",
 }
 
-/**
- * Featured Projects — editorial case-study cards.
- * Drops the dense `dl` mono labels in favour of paragraph-led prose with
- * a footer pattern strip. Each card is a story, not a form.
- */
 export function FeaturedProjects() {
   return (
     <section id={SECTION_IDS.projects} className="py-section-y-m md:py-section-y-d">
@@ -29,16 +24,16 @@ export function FeaturedProjects() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.05] tracking-[-0.02em] text-text-primary">
-                Problem,<br />
-                designed into a system.
+              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.15] tracking-[-0.02em] text-text-primary">
+                把问题，<br />
+                设计成一套系统。
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-5 md:col-start-8">
             <Reveal delay={0.1}>
-              <p className="text-[16px] leading-[1.65] text-text-secondary md:text-[17px]">
-                Each piece is a system, not a screenshot. Read for how the problem was framed, what was actually shipped, and what changed afterwards.
+              <p className="text-[16px] leading-[1.8] text-text-secondary md:text-[17px]">
+                每张卡片是一套系统，不是一张截图。看的是问题如何被界定、最终交付了什么、之后变化了什么。
               </p>
             </Reveal>
           </div>
@@ -61,25 +56,25 @@ export function FeaturedProjects() {
                     <Tag accent={p.accent}>{p.category}</Tag>
                   </div>
 
-                  <h3 className="mt-6 font-display text-[26px] font-medium leading-[1.15] tracking-[-0.01em] text-text-primary md:text-[30px]">
+                  <h3 className="mt-6 font-display text-[26px] font-medium leading-[1.2] tracking-[-0.01em] text-text-primary md:text-[30px]">
                     {p.name}
                   </h3>
 
-                  <p className="mt-5 text-[15.5px] leading-[1.7] text-text-secondary">
+                  <p className="mt-5 text-[15.5px] leading-[1.85] text-text-secondary">
                     {p.problem}
                   </p>
 
-                  <p className="mt-5 text-[15.5px] leading-[1.7] text-text-primary/90">
-                    <span className="text-text-muted">Designed —</span> {p.designed}
+                  <p className="mt-5 text-[15.5px] leading-[1.85] text-text-primary/90">
+                    <span className="text-text-muted">设计 —</span> {p.designed}
                   </p>
 
-                  <p className="mt-3 text-[14px] italic leading-[1.6] text-text-secondary/85">
-                    <span className="not-italic text-text-muted">Outcome —</span> {p.impact}
+                  <p className="mt-3 text-[14px] italic leading-[1.75] text-text-secondary/85">
+                    <span className="not-italic text-text-muted">价值 —</span> {p.impact}
                   </p>
 
                   <footer className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border-subtle pt-6 font-mono text-[10.5px] uppercase tracking-[0.22em] text-text-muted">
                     <span>{p.pattern}</span>
-                    <span className="text-text-secondary/80">{p.role.split(",")[0]}</span>
+                    <span className="text-text-secondary/80 normal-case tracking-normal">{p.role.split("、")[0]}</span>
                   </footer>
                 </article>
               </Reveal>
