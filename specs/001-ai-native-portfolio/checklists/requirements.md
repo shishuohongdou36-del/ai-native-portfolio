@@ -1,8 +1,17 @@
 # Requirements Quality Checklist — 001-ai-native-portfolio
 
 **Spec**: `../spec.md`
-**Validated**: 2026-05-07 (rev. 2 — Addendum §7–§16 integrated)
-**Result**: PASS WITH NOTE (ready for `spec-kit-plan`)
+**Validated**: 2026-05-07 (rev. 3 — Hero pivot to Option D Cinematic Typography Wall)
+**Result**: PASS WITH NOTE (Phase 1 shipped; Phase 2 in progress on Option D)
+
+## Rev. 3 Delta (Hero Pivot)
+
+- §9.2 enumerated **Option D — Cinematic Typography Wall** and set as new FR-170 default.
+- FR-170-NOTE clarifies WebGL fallback no longer applies to Hero subject.
+- FR-170-CAP reserves Agent Node Graph for Capability Map (Phase 3) instead of Hero.
+- FR-171/172/173/174/175 rephrased to suit Option D (typography subject vs. visual subject).
+- `plan.md` D2 fully rewritten; `research.md` adds R2-rev superseding R2.
+- No new `[NEEDS CLARIFICATION]` markers introduced. Constitution gates G1–G7 still PASS.
 
 ## Content Quality
 

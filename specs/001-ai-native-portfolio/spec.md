@@ -242,6 +242,8 @@
 
 > **Addendum (2026-05-07)**: 自第 7 章起为补充增强内容，用于约束视觉一致性、工程结构、Hero 表达、动效层级、实现优先级与反模式。原 §1–§6 不变。本 SDD 在此处**有意降一层抽象**，将部分实现指引（颜色 token、目录结构、占位文案、阶段拆分）写入规格，作为对实现方的强约束；这是站主明确选择，非 SDD 默认做法。`plan.md` 在生成时 MUST 与这些约束保持一致，不得自行替换。
 
+> **Hero Pivot (2026-05-07, rev. 3)**: §9.2 增加 **Option D — Cinematic Typography Wall** 并设为新默认（FR-170 修订）。原因：Phase 1 实测显示 Agent Node System 偏 dashboard 感，与"Digital Experimental Lab"主题的克制气质冲突，且与 Shoya Kajita 风格并未形成有效区隔。Option D 走零-3D / 超大排版 / 极简光带路线，转向 *cinematic studio* 气质。`plan.md` D2 决策同步修订（移除 R3F 作为 Hero 必需依赖），`research.md` R2 增 R2-rev 注记。
+
 ---
 
 ## 7. Visual Design System
@@ -401,15 +403,18 @@ src/
 
 Hero 同时承担三件事：**Wow Effect + 身份识别 + 主题表达（Digital Experimental Lab / AI Agent Control Room）**。
 
-### 9.2 Hero Visual Options（三选一）
+### 9.2 Hero Visual Options（四选一）
 
-- **Option A — Agent Node System（默认）**：发光节点悬浮深色空间，节点细线连接代表运行中的 Agent 网络；每节点对应一项能力（RAG / Workflow / Evaluation / Coding / Insurance AI / Multi-Agent）；鼠标驱动视差、连线强弱、发光强度；hover 节点出 tooltip。运动 MUST 缓慢克制，**禁止**做成普通粒子背景。
+- **Option A — Agent Node System**：发光节点悬浮深色空间，节点细线连接代表运行中的 Agent 网络；每节点对应一项能力；鼠标驱动视差、连线强弱、发光强度；hover 节点出 tooltip。运动 MUST 缓慢克制，**禁止**做成普通粒子背景。
 - **Option B — Digital Lab Orb**：中央交互 orb + 周围漂浮模块标签；鼠标驱动形变 / 光晕 / 视差。性能保守版本。
 - **Option C — Control Room Grid**：层叠深色面板 + 动态信号线 + 浮动标签；装饰为主，**禁止**做成普通 SaaS dashboard。
+- **Option D — Cinematic Typography Wall（默认，2026-05-07 修订）**：零 3D。整屏由超大 display 排版主导（站主名字 14–18vw / 副标题 4–6vw）。无画布、无节点、无 dashboard 装饰。背景为基础深色 + 极淡 noise + 远景柔和发光。鼠标驱动一根 1px 细光带（或同等克制的指针指示）。文案在 viewport 主轴居中或左对齐。适合追求 *high-end studio / cinematic* 气质、最小化炫技、最优 LCP 的方向。**禁止**为了视觉效果牺牲可读性；副文案 MUST 与名字层级清晰区分。
 
 ### 9.3 Default Choice
 
-- **FR-170**: Hero 视觉主体 MUST 默认实现 Option A；性能 / 复杂度不允许时方可退化为 Option B；**禁止**默认使用普通粒子背景。
+- **FR-170**: Hero 视觉主体 MUST 默认实现 **Option D — Cinematic Typography Wall**。当站主在未来通过显式 spec 修订改回时，方可使用 Option A / B / C。**禁止**默认使用普通粒子背景。
+- **FR-170-NOTE**: Option D 不依赖 WebGL，因此 FR-012 / FR-174 中的"WebGL fallback"对 Hero 视觉主体不再适用；fallback 仅适用于次级装饰动效（如鼠标光带、scroll-driven reveal）。
+- **FR-170-CAP**: 原 Option A 的 Agent Node Graph 概念**保留**为 Capability Map section（§3.1 FR-030/031）的视觉锚点候选（Phase 3 工作），不再作为 Hero 主体。
 
 ### 9.4 Hero Required Content（占位）
 
@@ -422,11 +427,11 @@ Hero 同时承担三件事：**Wow Effect + 身份识别 + 主题表达（Digita
 
 ### 9.5 Hero Layout Rules
 
-- **FR-171**: 文案与视觉主体 MUST 形成空间关系（左文右视觉 / 中心沉浸式），禁止简单上下堆叠。
-- **FR-172**: 移动端 MUST 优先保证文案可读，再展示简化视觉主体。
-- **FR-173**: 视觉主体 MUST NOT 遮挡 name / title / tagline。
-- **FR-174**: WebGL 未加载时 Hero 文字 MUST 先展示。
-- **FR-175**: Hero 首屏建议 100vh，但 MUST NOT 因固定高度导致移动端溢出。
+- **FR-171**: Hero MUST 形成清晰的空间层级。在 Option D 下，名字 MUST 是首屏视觉主体（占据视觉重心 ≥ 40% 高度），副标题、tagline、CTA 形成下行节奏；**禁止**简单上下堆叠成"标题 + 段落"形态。
+- **FR-172**: 移动端 MUST 优先保证文案可读，名字字号自动收敛但仍占视觉重心。
+- **FR-173**: 任何装饰元素（光带、noise、远景光斑）MUST NOT 遮挡 name / 副标题 / tagline。
+- **FR-174**: 任何依赖 WebGL / Canvas 的次级装饰未加载时，Hero 文字 MUST 先展示。Option D 下 Hero 主体本身不依赖 WebGL，本规则改约束次级装饰。
+- **FR-175**: Hero 首屏建议 100svh（safe-area-aware），MUST NOT 因固定高度导致移动端溢出或滚动条出现。
 
 ---
 

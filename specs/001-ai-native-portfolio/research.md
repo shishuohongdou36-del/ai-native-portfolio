@@ -15,12 +15,25 @@ Resolves all `NEEDS CLARIFICATION` items from `plan.md` Technical Context and th
 
 ## R2. Hero visual library
 
+> **Superseded 2026-05-07 (rev. 3) — see R2-rev below.** Original entry preserved for traceability.
+
 - **Decision**: React Three Fiber (R3F) + drei + three.js for primary; Canvas2D in a sibling component for fallback.
 - **Rationale**: R3F renders true 3D depth/bloom expected of a "control room"; drei provides camera + line/points helpers that keep node-graph code under ~150 LOC. Canvas2D fallback shares the same `capabilities.ts` graph data, ensuring identity parity (FR-170, FR-174, FR-012).
 - **Alternatives**:
   - **Vanilla three.js** — rejected: more imperative lifecycle code, more risk of leaks on unmount.
   - **PixiJS / 2D-only** — rejected: no depth cues; harder to communicate "spatial layering" per spec §1.2.
   - **CSS-only animated SVG** — kept as the **`static` performance mode** asset, not as the default.
+
+## R2-rev. Hero visual approach (rev. 3, 2026-05-07)
+
+- **Decision**: No 3D library, no canvas. Hero is a typography-driven wall using existing Space Grotesk + Framer Motion only.
+- **Rationale**: Per spec §9.2 Option D / FR-170, the Hero pivots to "Cinematic Typography Wall". This eliminates R3F, drei, three.js, and the Canvas2D fallback from the Hero critical path. LCP risk drops to near-zero. The motion budget reallocates to letter-stagger + a 1px mouse scan beam — both pure React/CSS.
+- **Net effect on dependencies**: R3F + drei + three.js are **not** added to `package.json` (they were never installed in Phase 1; the canvas fallback we shipped uses native `<canvas>` 2D context only). This rev. simply removes the Phase 2 plan to install them.
+- **Disposition of the existing Canvas2D node graph (`AgentNodeGraphFallback.tsx`)**: retained but unused by Hero. Reserved as a Phase 3 candidate visual anchor for Capability Map per spec FR-170-CAP.
+- **Alternatives reconsidered**:
+  - **Keep Option A (R3F)** — rejected: literal "AI control room" reads dashboard-y; user feedback after Phase 1 implementation flagged this directly.
+  - **Option B (Lab Orb)** — rejected for v1: still requires R3F for the volumetric core; defers the same dependency cost.
+  - **Option D (this) — Cinematic Typography Wall** — chosen: matches the Digital Experimental Lab tone via restraint rather than density, ships the lowest LCP, and lets the typography itself carry the brand.
 
 ## R3. Animation library
 
