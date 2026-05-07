@@ -35,7 +35,13 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['"Inter Variable"', "Inter", "system-ui", "sans-serif"],
-        display: ['"Space Grotesk"', '"Inter Variable"', "Inter", "sans-serif"],
+        display: [
+          '"Bricolage Grotesque Variable"',
+          '"Bricolage Grotesque"',
+          '"Inter Variable"',
+          "Inter",
+          "sans-serif",
+        ],
         mono: ['ui-monospace', "SFMono-Regular", "Menlo", "monospace"],
       },
       fontSize: {
