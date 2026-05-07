@@ -1,7 +1,6 @@
 import { SECTION_IDS } from "@/lib/constants"
 import { profile } from "@/data/profile"
 import { channels } from "@/data/contact"
-import { SectionHeader } from "@/components/ui/SectionHeader"
 import { Reveal } from "@/components/ui/Reveal"
 import { MagneticButton } from "@/components/ui/MagneticButton"
 import { ExternalLink } from "@/components/ui/ExternalLink"
@@ -10,56 +9,69 @@ export function Contact() {
   return (
     <section id={SECTION_IDS.contact} className="py-section-y-m md:py-section-y-d">
       <div className="container-x">
-        <SectionHeader
-          eyebrow="06 — Contact"
-          title="Open to AI-native product collaborations."
-          description="Best for: B2B AI product design, agent / workflow systems, evaluation infrastructure, and AI-coding-driven delivery."
-        />
-        <Reveal>
-          <div className="surface-glass relative overflow-hidden rounded-3xl p-8 md:p-12">
-            <div className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-accent-cyan/15 blur-[100px]" aria-hidden />
-            <div className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-accent-violet/15 blur-[100px]" aria-hidden />
-            <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-text-muted">
-                  signal_open · accepting_inbound
-                </p>
-                <h3 className="mt-3 font-display text-3xl font-medium leading-tight text-text-primary md:text-4xl">
-                  Let's design AI systems that <span className="text-gradient-cyan-violet">decide and execute.</span>
-                </h3>
-                <p className="mt-4 max-w-lg text-base leading-relaxed text-text-secondary">
-                  If you're building an AI-native product and need a partner who can frame the problem, design the workflow, run the evaluation loop, and ship — get in touch.
-                </p>
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <MagneticButton href={`mailto:${profile.email}`} variant="primary">
-                    Email me
-                  </MagneticButton>
-                  <MagneticButton href={profile.github} variant="secondary">
-                    GitHub
-                  </MagneticButton>
-                </div>
+        <div className="grid gap-x-16 gap-y-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-text-muted">
+                <span className="mr-3 inline-block h-px w-8 align-middle bg-text-muted/60" />
+                06 — Contact
+              </p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.1] tracking-[-0.025em] text-text-primary">
+                让我们一起，设计能<br />
+                <span className="text-gradient-cyan-violet">决策与执行</span>的 AI 系统。
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-6 max-w-md text-[17px] leading-[1.8] text-text-secondary">
+                适合的方向：B 端 AI 产品设计、Agent 与工作流体系、评估基础设施、AI Coding 驱动的交付。
+              </p>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <MagneticButton href={`mailto:${profile.email}`} variant="primary">
+                  发送邮件
+                </MagneticButton>
+                <MagneticButton href={profile.github} variant="secondary">
+                  GitHub
+                </MagneticButton>
               </div>
-              <ul className="space-y-3 self-end">
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-5 md:col-start-8 md:pt-2">
+            <Reveal delay={0.15}>
+              <ul className="border-t border-border-subtle">
                 {channels.map((c) => (
                   <li
                     key={c.label}
-                    className="flex items-center justify-between rounded-xl border border-border-subtle bg-bg-elevated/40 px-4 py-3"
+                    className="group flex items-baseline justify-between gap-6 border-b border-border-subtle py-5 transition-colors duration-300 hover:border-border-active"
                   >
                     <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-muted">
+                      <p className="font-mono text-[10.5px] uppercase tracking-[0.26em] text-text-muted">
                         {c.label}
                       </p>
-                      <p className="mt-0.5 text-[13px] text-text-primary">{c.value}</p>
+                      <p className="mt-1.5 text-[16px] text-text-primary">
+                        <ExternalLink href={c.href} className="hover:text-text-primary">
+                          {c.value}
+                        </ExternalLink>
+                      </p>
                     </div>
-                    <ExternalLink href={c.href} aria-label={`Open ${c.label}`}>
-                      <span className="sr-only">Open</span>
-                    </ExternalLink>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-text-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      ↗
+                    </span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
+            <Reveal delay={0.22}>
+              <p className="mt-10 max-w-sm text-[14px] leading-[1.8] text-text-muted">
+                目前位于 {profile.location}。开放亚太与欧洲时区的远程或现场合作。
+              </p>
+            </Reveal>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   )

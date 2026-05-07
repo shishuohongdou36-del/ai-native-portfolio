@@ -1,8 +1,27 @@
 # Requirements Quality Checklist — 001-ai-native-portfolio
 
 **Spec**: `../spec.md`
-**Validated**: 2026-05-07 (rev. 2 — Addendum §7–§16 integrated)
-**Result**: PASS WITH NOTE (ready for `spec-kit-plan`)
+**Validated**: 2026-05-07 (rev. 4 — Localization pivot to zh-Hans body)
+**Result**: PASS WITH NOTE (Phase 1+2+UI tune+typography shipped; localization in progress)
+
+## Rev. 4 Delta (Localization Pivot)
+
+- §5 Out of Scope original "v1 i18n excluded" line is overridden by owner's explicit ask.
+- New "Localization Pivot" annotation block before §7 enumerates the four English layers that intentionally remain (mono labels, Hero Latin display name, technical terms, brand identity terms).
+- FR-120 rewritten: placeholder copy now zh-Hans by default.
+- Tailwind `font.display` and `font.sans` chains add PingFang SC / HarmonyOS Sans SC / Microsoft YaHei fallbacks (no new web font network cost).
+- `<html lang>` → `zh-Hans`; OG locale → `zh_CN`.
+- No data-contract schema change; only string content swapped across `src/data/*`.
+- Constitution gates G1–G7 still PASS.
+
+## Rev. 3 Delta (Hero Pivot)
+
+- §9.2 enumerated **Option D — Cinematic Typography Wall** and set as new FR-170 default.
+- FR-170-NOTE clarifies WebGL fallback no longer applies to Hero subject.
+- FR-170-CAP reserves Agent Node Graph for Capability Map (Phase 3) instead of Hero.
+- FR-171/172/173/174/175 rephrased to suit Option D (typography subject vs. visual subject).
+- `plan.md` D2 fully rewritten; `research.md` adds R2-rev superseding R2.
+- No new `[NEEDS CLARIFICATION]` markers introduced. Constitution gates G1–G7 still PASS.
 
 ## Content Quality
 

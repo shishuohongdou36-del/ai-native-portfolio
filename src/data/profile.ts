@@ -1,11 +1,12 @@
-// REPLACE ME — owner can swap any string here.
+// REPLACE ME — placeholder content. Owner can swap any string.
 export const profile = {
-  name: "Yao Xin",
-  title: "AI Product Manager / AI Native Builder",
-  tagline: "Designing AI systems that think, decide, and execute.",
+  name: "姚鑫",
+  nameLatin: "Yao Xin",
+  title: "AI 产品经理 / AI Native Builder",
+  tagline: "设计能思考、决策、执行的 AI 系统。",
   subline:
-    "I build AI-native products across RAG, multi-agent workflows, evaluation loops, and industry-grade automation.",
-  location: "Shanghai / Remote",
+    "围绕 RAG、多 Agent 工作流、评估闭环和工业级自动化，构建 AI 原生产品。",
+  location: "上海 / Remote",
   email: "replace-with-your-email@example.com",
   github: "https://github.com/replace-me",
   socials: [

@@ -7,27 +7,27 @@ export interface WritingEntry {
   publishedAt?: string
 }
 
-// REPLACE ME — placeholders until owner adds real essays.
+// REPLACE ME — 占位文章，等站主补充真实链接与日期。
 export const writing: readonly WritingEntry[] = [
   {
     id: "agent-workflows-vs-prompts",
-    title: "Agent Workflows vs. Prompts: Where the Real Engineering Lives",
+    title: "Agent Workflow vs. Prompt：真正的工程在哪里",
     tags: ["Multi-Agent", "Workflow Design"],
     excerpt:
-      "Why durable AI products are built around workflows and evaluation loops, not just prompt tuning — and how to draw that line as a product manager.",
+      "持久的 AI 产品建立在工作流与评估闭环之上，而不是 Prompt 调优 —— 以及作为产品经理如何划这条边界。",
   },
   {
     id: "evaluation-loop-as-product-asset",
-    title: "Evaluation Loops Are a Product Asset, Not a QA Step",
+    title: "评估闭环不是 QA，是产品资产",
     tags: ["Evaluation Loop", "AI Product"],
     excerpt:
-      "Test sets, bad-case taxonomies, and acceptance criteria are leverage. Treating them as product artifacts changes how a team improves over time.",
+      "测试集、Bad Case 分类、验收标准是杠杆。把它们当作产品 artifact 来经营，团队的迭代方式会变。",
   },
   {
     id: "bad-case-attribution-playbook",
-    title: "A Bad-Case Attribution Playbook for AI Product Managers",
+    title: "AI 产品经理的 Bad Case 归因 Playbook",
     tags: ["Bad Case Attribution", "Methodology"],
     excerpt:
-      "A field-tested decomposition for tracing failures back to retrieval, reasoning, prompts, tools, data quality, or product constraints.",
+      "一份实战拆解：把失败追溯到检索、推理、Prompt、工具、数据质量或产品约束。",
   },
 ] as const
