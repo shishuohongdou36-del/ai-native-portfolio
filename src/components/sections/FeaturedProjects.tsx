@@ -11,6 +11,13 @@ const ACCENT_GLOW: Record<string, string> = {
   green: "group-hover:border-accent-green/40",
 }
 
+const ACCENT_DOT: Record<string, string> = {
+  cyan: "bg-accent-cyan group-hover:shadow-[0_0_24px_rgba(69,230,255,0.65)]",
+  violet: "bg-accent-violet group-hover:shadow-[0_0_24px_rgba(139,92,255,0.65)]",
+  blue: "bg-accent-blue group-hover:shadow-[0_0_24px_rgba(59,130,246,0.65)]",
+  green: "bg-accent-green group-hover:shadow-[0_0_24px_rgba(95,255,177,0.65)]",
+}
+
 export function FeaturedProjects() {
   return (
     <section id={SECTION_IDS.projects} className="py-section-y-m md:py-section-y-d">
@@ -20,12 +27,13 @@ export function FeaturedProjects() {
             <Reveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-text-muted">
                 <span className="mr-3 inline-block h-px w-8 align-middle bg-text-muted/60" />
-                03 — Selected Work
+                03 / Selected Work
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.15] tracking-[-0.02em] text-text-primary">
-                把问题，<br />
+              <h2 className="mt-6 font-display text-section-m font-medium leading-[1.15] text-text-primary md:text-section-d">
+                把问题，
+                <br />
                 设计成一套系统。
               </h2>
             </Reveal>
@@ -50,31 +58,44 @@ export function FeaturedProjects() {
                   )}
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.26em] text-text-muted">
-                      Case · {String(i + 1).padStart(2, "0")}
+                    <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.26em] text-text-muted">
+                      <span
+                        className={cn(
+                          "h-1.5 w-1.5 rounded-full transition-[box-shadow,transform] duration-300 group-hover:scale-150",
+                          ACCENT_DOT[p.accent]
+                        )}
+                        aria-hidden
+                      />
+                      Case / {String(i + 1).padStart(2, "0")}
                     </span>
                     <Tag accent={p.accent}>{p.category}</Tag>
                   </div>
 
-                  <h3 className="mt-6 font-display text-[26px] font-medium leading-[1.2] tracking-[-0.01em] text-text-primary md:text-[30px]">
-                    {p.name}
-                  </h3>
+                  <div className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out motion-safe:group-hover:-translate-y-0.5">
+                    <h3 className="mt-6 font-display text-[26px] font-medium leading-[1.2] text-text-primary md:text-[30px]">
+                      {p.name}
+                    </h3>
 
-                  <p className="mt-5 text-[15.5px] leading-[1.85] text-text-secondary">
-                    {p.problem}
-                  </p>
+                    <p className="mt-5 text-[15.5px] leading-[1.85] text-text-secondary">
+                      {p.problem}
+                    </p>
 
-                  <p className="mt-5 text-[15.5px] leading-[1.85] text-text-primary/90">
-                    <span className="text-text-muted">设计 —</span> {p.designed}
-                  </p>
+                    <p className="mt-5 text-[15.5px] leading-[1.85] text-text-primary/90 motion-safe:transition-transform motion-safe:delay-75 motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5">
+                      <span className="text-text-muted">设计 / </span>
+                      {p.designed}
+                    </p>
 
-                  <p className="mt-3 text-[14px] italic leading-[1.75] text-text-secondary/85">
-                    <span className="not-italic text-text-muted">价值 —</span> {p.impact}
-                  </p>
+                    <p className="mt-3 text-[14px] italic leading-[1.75] text-text-secondary/85 motion-safe:transition-transform motion-safe:delay-100 motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5">
+                      <span className="not-italic text-text-muted">价值 / </span>
+                      {p.impact}
+                    </p>
+                  </div>
 
-                  <footer className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border-subtle pt-6 font-mono text-[10.5px] uppercase tracking-[0.22em] text-text-muted">
+                  <footer className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border-subtle pt-6 font-mono text-[10.5px] uppercase tracking-[0.22em] text-text-muted motion-safe:transition-transform motion-safe:delay-150 motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5">
                     <span>{p.pattern}</span>
-                    <span className="text-text-secondary/80 normal-case tracking-normal">{p.role.split("、")[0]}</span>
+                    <span className="text-text-secondary/80 normal-case tracking-normal">
+                      {p.role.split("。")[0]}
+                    </span>
                   </footer>
                 </article>
               </Reveal>

@@ -1,6 +1,7 @@
 import { SECTION_IDS } from "@/lib/constants"
 import { capabilities } from "@/data/capabilities"
 import { Reveal } from "@/components/ui/Reveal"
+import { AgentNodeGraphFallback } from "@/components/visuals/AgentNodeGraphFallback"
 import { cn } from "@/lib/cn"
 
 const ACCENT_DOT: Record<string, string> = {
@@ -38,11 +39,25 @@ export function CapabilityMap() {
           </div>
         </header>
 
+        <Reveal delay={0.12}>
+          <div className="relative mb-12 h-[min(320px,58vw)] overflow-hidden border-y border-border-subtle bg-bg-secondary/35">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/50 to-transparent" />
+            <AgentNodeGraphFallback />
+            <div
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent_0%,rgba(5,7,13,0.18)_55%,rgba(5,7,13,0.72)_100%)]"
+              aria-hidden
+            />
+          </div>
+        </Reveal>
+
         <ul className="border-t border-border-subtle">
           {capabilities.map((c, i) => (
             <li key={c.id}>
               <Reveal delay={0.04 * i}>
-                <div className="group grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 border-b border-border-subtle py-7 transition-colors duration-300 hover:border-border-active md:grid-cols-[auto_minmax(0,1fr)_minmax(0,1.4fr)] md:gap-x-12 md:py-9">
+                <div
+                  tabIndex={0}
+                  className="group grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 border-b border-border-subtle py-7 transition-colors duration-300 hover:border-border-active focus-visible:border-border-active md:grid-cols-[auto_minmax(0,1fr)_minmax(0,1.4fr)] md:gap-x-12 md:py-9"
+                >
                   <span className="font-mono text-[12px] uppercase tracking-[0.24em] text-text-muted md:pt-1.5">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -60,6 +75,11 @@ export function CapabilityMap() {
                   </h3>
                   <p className="col-start-2 text-[15px] leading-[1.8] text-text-secondary md:col-start-3 md:text-[16px] md:pt-2">
                     {c.description}
+                    {c.detail && (
+                      <span className="block max-h-0 translate-y-1 overflow-hidden pt-0 text-[14px] leading-[1.75] text-text-muted opacity-0 transition-[max-height,opacity,transform,padding] duration-300 ease-out group-hover:max-h-28 group-hover:translate-y-0 group-hover:pt-3 group-hover:opacity-100 group-focus-within:max-h-28 group-focus-within:translate-y-0 group-focus-within:pt-3 group-focus-within:opacity-100 motion-reduce:transition-none">
+                        {c.detail}
+                      </span>
+                    )}
                   </p>
                 </div>
               </Reveal>

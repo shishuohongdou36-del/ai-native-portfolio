@@ -44,6 +44,7 @@ items:
     id:           { enum: [rag, multi-agent, workflow-design, evaluation-loop, ai-coding, insurance-ai] }
     name:         { type: string, minLength: 1 }
     description:  { type: string, minLength: 1, maxLength: 160 }
+    detail:       { type: string, minLength: 1, maxLength: 180 }
     visualWeight: { enum: [core, supporting, domain] }
     accent:       { enum: [cyan, violet, blue, green] }
 uniqueBy: id

@@ -85,31 +85,31 @@ Maps to spec §3 FR-031 / FR-042 / FR-180 / FR-181 / FR-182 and plan.md Phase 3 
 
 ### Project card layered hover (US2)
 
-- [ ] **T010** [US2] In `src/components/sections/FeaturedProjects.tsx`, add a second hover layer per FR-180: on `group-hover`, the inner content (Designed paragraph + footer pattern strip) shifts y -2px with stagger; the accent dot or category tag glows independently. Keep the existing border/translate as Layer 1.
-- [ ] **T011** [P] [US2] Add `motion-safe:` Tailwind variants on the new hover layer so reduced-motion users get only the border glow (FR-082).
+- [x] **T010** [US2] In `src/components/sections/FeaturedProjects.tsx`, add a second hover layer per FR-180: on `group-hover`, the inner content (Designed paragraph + footer pattern strip) shifts y -2px with stagger; the accent dot or category tag glows independently. Keep the existing border/translate as Layer 1.
+- [x] **T011** [P] [US2] Add `motion-safe:` Tailwind variants on the new hover layer so reduced-motion users get only the border glow (FR-082).
 - [ ] **T012** [US2] Update `tests/e2e/smoke.spec.ts` to assert the project card on `mouseover` produces both layers (Layer 1: shadow-glow class applied; Layer 2: inner translate via getComputedStyle).
 
 ### Capability tooltip / hover detail (US2)
 
-- [ ] **T013** [US2] In `src/components/sections/CapabilityMap.tsx`, add a hover/focus state that reveals an expanded micro-detail (one extra sentence per capability — add `detail?: string` field to `Capability` type in `src/data/capabilities.ts` first).
-- [ ] **T014** [P] [US2] Update `contracts/data-contracts.md` C2 schema to include the new optional `detail` field; update `data-model.md` E2 accordingly.
-- [ ] **T015** [US2] Reattach `AgentNodeGraphFallback` as a non-decorative visual anchor at the top of CapabilityMap section per FR-170-CAP. Constrain to ≤ 320px tall, decorative role (aria-hidden), no dashboard chrome around it.
+- [x] **T013** [US2] In `src/components/sections/CapabilityMap.tsx`, add a hover/focus state that reveals an expanded micro-detail (one extra sentence per capability — add `detail?: string` field to `Capability` type in `src/data/capabilities.ts` first).
+- [x] **T014** [P] [US2] Update `contracts/data-contracts.md` C2 schema to include the new optional `detail` field; update `data-model.md` E2 accordingly.
+- [x] **T015** [US2] Reattach `AgentNodeGraphFallback` as a non-decorative visual anchor at the top of CapabilityMap section per FR-170-CAP. Constrain to ≤ 320px tall, decorative role (aria-hidden), no dashboard chrome around it.
 
 ### Methodology stagger reveal (US3)
 
-- [ ] 🟡 **T016** [US3] In `src/components/sections/Methodology.tsx`, replace the current per-row `Reveal delay={0.05*i}` with a single `staggerChildren` parent so the 6 steps appear sequentially with 80ms cadence; cap total at 600ms (FR-080). _Status: visual goal already met via per-row Reveal; pattern refactor pending._
+- [x] **T016** [US3] In `src/components/sections/Methodology.tsx`, replace the current per-row `Reveal delay={0.05*i}` with a single `staggerChildren` parent so the 6 steps appear sequentially with 80ms cadence; cap total at 600ms (FR-080).
 
 ### Global cursor enhancement (US1)
 
-- [ ] 🟡 **T017** [P] [US1] In `src/components/visuals/CursorGlow.tsx`, accept reduced-motion via `MotionContext` rather than a separate hook check; ensure the halo is suppressed on touch devices via `matchMedia('(pointer: coarse)')`. _Status: MotionContext consumption ✅; touch suppression uses width-based `useIsMobile` instead of pointer-based query._
+- [x] **T017** [P] [US1] In `src/components/visuals/CursorGlow.tsx`, accept reduced-motion via `MotionContext` rather than a separate hook check; ensure the halo is suppressed on touch devices via `matchMedia('(pointer: coarse)')`.
 
 ### Writing card hover (US3)
 
-- [ ] **T018** [P] [US3] In `src/components/sections/Writing.tsx`, add a 1px accent underline under the title that animates from left to right on hover (transform: scaleX, origin-left). 200ms ease.
+- [x] **T018** [P] [US3] In `src/components/sections/Writing.tsx`, add a 1px accent underline under the title that animates from left to right on hover (transform: scaleX, origin-left). 200ms ease.
 
 ### Contact CTA hover (US4)
 
-- [ ] 🟡 **T019** [P] [US4] In `src/components/sections/Contact.tsx`, the channel-list row already reveals `↗` on hover. Confirm focus-visible state shows the same arrow for keyboard users (a11y). _Status: hover state ✅; focus-visible state still missing the arrow reveal._
+- [x] **T019** [P] [US4] In `src/components/sections/Contact.tsx`, the channel-list row already reveals `↗` on hover. Confirm focus-visible state shows the same arrow for keyboard users (a11y).
 
 ### Phase 3 acceptance verification
 

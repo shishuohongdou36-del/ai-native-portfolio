@@ -47,6 +47,7 @@ Array of 6 entries (fixed by FR-030).
 | `id` | `string` (kebab-case, unique) | yes | stable node identity for `AgentNodeGraph` |
 | `name` | `string` | yes | display label |
 | `description` | `string` | yes | one sentence (FR-031) |
+| `detail` | `string` | no | optional expanded hover / focus micro-detail for Phase 3 interactions |
 | `visualWeight` | `'core' \| 'supporting' \| 'domain'` | yes | spec §10.3; influences node size + group color |
 | `accent` | `'cyan' \| 'violet' \| 'blue' \| 'green'` | yes | maps to `colors.accent*` token |
 

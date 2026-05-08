@@ -48,6 +48,7 @@ export function Writing() {
                     <h3 className="font-display text-2xl font-medium leading-[1.3] tracking-[-0.01em] text-text-primary transition-colors duration-300 group-hover:text-text-primary md:text-[28px]">
                       {w.title}
                     </h3>
+                    <span className="mt-3 block h-px w-full origin-left scale-x-0 bg-accent-cyan transition-transform duration-200 ease-out group-hover:scale-x-100 group-focus-within:scale-x-100 motion-reduce:transition-none" />
                     <p className="mt-3 text-[15px] leading-[1.85] text-text-secondary md:text-[16px]">
                       {w.excerpt}
                     </p>

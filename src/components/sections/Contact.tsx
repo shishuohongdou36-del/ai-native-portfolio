@@ -14,12 +14,13 @@ export function Contact() {
             <Reveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-text-muted">
                 <span className="mr-3 inline-block h-px w-8 align-middle bg-text-muted/60" />
-                06 — Contact
+                06 / Contact
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-6 font-display text-section-m md:text-section-d font-medium leading-[1.1] tracking-[-0.025em] text-text-primary">
-                让我们一起，设计能<br />
+              <h2 className="mt-6 font-display text-section-m font-medium leading-[1.1] text-text-primary md:text-section-d">
+                让我们一起，设计能
+                <br />
                 <span className="text-gradient-cyan-violet">决策与执行</span>的 AI 系统。
               </h2>
             </Reveal>
@@ -46,7 +47,7 @@ export function Contact() {
                 {channels.map((c) => (
                   <li
                     key={c.label}
-                    className="group flex items-baseline justify-between gap-6 border-b border-border-subtle py-5 transition-colors duration-300 hover:border-border-active"
+                    className="group flex items-baseline justify-between gap-6 border-b border-border-subtle py-5 transition-colors duration-300 hover:border-border-active focus-within:border-border-active"
                   >
                     <div>
                       <p className="font-mono text-[10.5px] uppercase tracking-[0.26em] text-text-muted">
@@ -58,8 +59,8 @@ export function Contact() {
                         </ExternalLink>
                       </p>
                     </div>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-text-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      ↗
+                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-text-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+                      -&gt;
                     </span>
                   </li>
                 ))}

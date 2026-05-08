@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useMotion } from "@/context/MotionContext"
-import { useIsMobile } from "@/hooks/useIsMobile"
 
 /**
  * Soft cursor halo — Level 2 global feedback. Spec FR-081.
@@ -9,11 +8,19 @@ import { useIsMobile } from "@/hooks/useIsMobile"
  */
 export function CursorGlow() {
   const { motionDisabled } = useMotion()
-  const isMobile = useIsMobile()
+  const [hasCoarsePointer, setHasCoarsePointer] = useState(false)
   const [pos, setPos] = useState({ x: -1000, y: -1000 })
 
   useEffect(() => {
-    if (motionDisabled || isMobile) return
+    const media = window.matchMedia("(pointer: coarse)")
+    setHasCoarsePointer(media.matches)
+    const onChange = (event: MediaQueryListEvent) => setHasCoarsePointer(event.matches)
+    media.addEventListener("change", onChange)
+    return () => media.removeEventListener("change", onChange)
+  }, [])
+
+  useEffect(() => {
+    if (motionDisabled || hasCoarsePointer) return
     let raf = 0
     let pending: { x: number; y: number } | null = null
     const flush = () => {
@@ -32,9 +39,9 @@ export function CursorGlow() {
       window.removeEventListener("mousemove", onMove)
       if (raf) cancelAnimationFrame(raf)
     }
-  }, [motionDisabled, isMobile])
+  }, [motionDisabled, hasCoarsePointer])
 
-  if (motionDisabled || isMobile) return null
+  if (motionDisabled || hasCoarsePointer) return null
 
   return (
     <div
