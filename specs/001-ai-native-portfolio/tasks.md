@@ -5,7 +5,7 @@
 **Date**: 2026-05-07
 **Status**: Phase 1 + Phase 2 (rev. 3) + UI Tune + Typography + i18n landed on `main`. This document covers the **remaining** work — Phase 3 onward — plus retroactive setup tasks (tests, CI) that were skipped during the rapid prototyping pass.
 
-> **Last progress sync**: 2026-05-07 18:07 — see [Progress Status](#progress-status-2026-05-07) for current per-task state.
+> **Last progress sync**: 2026-05-08 22:40 — see [Progress Status](#progress-status-2026-05-08) for current per-task state.
 
 ## Phase Map
 
@@ -13,42 +13,64 @@
 | --- | --- | --- | --- | --- |
 | 1 — Foundation | shipped | ✅ | covered by PR #1 | — |
 | 2 — Hero Wow (rev. 3 Option D) | shipped | ✅ | covered by PR #6 | — |
-| Cross-cutting / Setup | retroactive | ❌ | T001–T006 | 0 / 6 |
-| Foundational tests | retroactive | ❌ | T007–T009 | 0 / 3 |
-| 3 — Section Interactions | partial | 🟡 | T010–T021 | 0 ✅ + 3 🟡 / 12 |
-| 4 — Performance & A11y | not started | ❌ | T030–T046 | 0 ✅ + 1 🟡 / 17 |
+| Cross-cutting / Setup | complete | ✅ | T001–T006 | 6 / 6 |
+| Foundational tests | complete | ✅ | T007–T009 | 3 / 3 |
+| 3 — Section Interactions | near-complete | 🟡 | T010–T021 | 11 / 12 |
+| 4 — Performance & A11y | started | 🟡 | T030–T046 | 1 ✅ + 1 🟡 / 17 |
 | 5 — Optional Immersive | not started (optional) | ⚪ | T060–T065 | 0 / 6 |
 | Content & Launch | not started | ❌ | T070–T078 | 0 / 9 |
 
-## Progress Status (2026-05-07)
+## Progress Status (2026-05-08)
 
-### Done ✅
+### Done ✅ (20 tasks)
 
-None at strict-checklist level. Phase 1 + Phase 2 + UI tune + Bricolage typography + zh-Hans i18n shipped on `main` via PR #1 and PR #6, but those landed **before** this `tasks.md` was generated and are documented in the Phase Map row above (rather than as ticked checkboxes here).
+**Phase A (Setup) — all 6 complete:**
+- T001: vitest + @vitest/ui + jsdom installed; `test` / `test:watch` scripts added
+- T002: playwright + @playwright/test + @axe-core/playwright installed; `test:e2e` script + `playwright.config.ts` (4 viewports)
+- T003: ESLint flat config with typescript-eslint, react-hooks, inline-hex-color ban
+- T004: `.editorconfig` enforcing LF
+- T005: `vitest.config.ts` with jsdom environment
+- T006: `tests/setup.tsx` with jest-dom + MotionContext wrapper
 
-### Partial 🟡
+**Phase B (Foundational tests) — all 3 complete:**
+- T007: `tests/unit/data.shape.test.ts` — 5 assertions covering all data contracts
+- T008: `tests/unit/usePerformanceMode.test.ts` — initial state / WebGL / FPS downgrade
+- T009: `tests/unit/useReducedMotion.test.ts` — matchMedia init + change event
 
-- **T016** — Methodology stagger reveal exists via per-row `<Reveal delay={0.05*i}>`, achieving the visual goal. Strict `staggerChildren` parent pattern not adopted; can be refactored without behaviour change.
-- **T017** — `CursorGlow` already consumes `useMotion().motionDisabled` (✅ done sub-clause). Touch suppression uses `useIsMobile` (`window.innerWidth < 768`) rather than `matchMedia('(pointer: coarse)')`; equivalent in practice for most devices but misses Surface / iPad-with-keyboard edge cases.
-- **T019** — `:focus-visible` global outline exists (`src/styles/globals.css`); however the channel-list `↗` arrow in `Contact.tsx` reveals only on `:hover`, not on `:focus-visible`. Keyboard users get the row hover-border but no arrow.
-- **T034** — Global `:focus-visible` rule provides visible focus rings (partial intent of the audit). Per-element contrast/visibility audit not yet performed.
+**Phase C (Section Interactions) — 11 of 12 complete:**
+- T010: FeaturedProjects layered hover (Layer 2: footer shift + dot glow)
+- T011: `motion-safe:` Tailwind variants on hover layers
+- T012: `tests/e2e/smoke.spec.ts` asserting both hover layers
+- T013: CapabilityMap hover detail (detail field + slide-down reveal)
+- T014: `data-contracts.md` + `data-model.md` updated with `detail?` field
+- T015: `AgentNodeGraphFallback` reattached to CapabilityMap (≤320px, aria-hidden)
+- T016: Methodology `staggerChildren` parent (80ms cadence, ~480ms total)
+- T017: CursorGlow uses `matchMedia('(pointer: coarse)')` for touch suppression
+- T018: Writing card 1px accent underline (scaleX, origin-left, 200ms)
+- T019: Contact channel-list arrow visible on `group-focus-within`
+- T020: `tests/e2e/responsive.spec.ts` (no overflow, 7 sections reachable)
 
-### Not started ❌
+**Phase D (Performance) — 1 of 17 complete:**
+- T039: Font preload `<link>` in `index.html`; self-hosted latin woff2 subsets in `public/fonts/`; removed @fontsource packages (bundle −~500KB of unused font subsets)
 
-- All Setup tasks (T001–T006): no test runner, no eslint config, no `.editorconfig`.
-- All Foundational tests (T007–T009).
-- Phase 3 remaining (9 of 12 tasks): T010 second hover layer, T011 motion-safe variants, T012 smoke E2E, T013 capability detail data + UI, T014 contract update, T015 AgentNodeGraph reattach to CapabilityMap, T018 writing card underline, T020 responsive E2E, T021 manual sign-off.
-- All Phase 4 except partial T034 (16 of 17 tasks).
-- All Phase 5 (6 tasks; optional).
-- All Phase F (9 tasks; 4 require owner input).
+### Partial 🟡 (1 task)
+
+- **T034** — Global `:focus-visible` rule provides visible focus rings. Per-element contrast/visibility audit not yet performed.
+
+### Not started ❌ (32 tasks)
+
+- Phase C: T021 (manual sign-off)
+- Phase D: T030–T033, T035–T038, T040–T046 (15 tasks)
+- Phase E: T060–T065 (6 tasks, optional)
+- Phase F: T070–T078 (9 tasks, 4 require owner input)
 
 ### Tally
 
 | State | Count |
 | --- | --- |
-| ✅ Done | 0 |
-| 🟡 Partial | 4 |
-| ❌ Not started | 49 |
+| ✅ Done | 20 |
+| 🟡 Partial | 1 |
+| ❌ Not started | 32 |
 | **Total** | **53** |
 
 > Phase 1 + Phase 2 + UI Tune + i18n + Typography (everything visible on `main` today) are tracked at the **Phase Map level** above, not by individual ticks here, because they predate this tasks.md.
@@ -57,16 +79,16 @@ None at strict-checklist level. Phase 1 + Phase 2 + UI tune + Bricolage typograp
 
 ## Phase A — Setup (retroactive, blocking quality work)
 
-- [ ] **T001** Add `vitest`, `@vitest/ui`, `jsdom` as devDependencies in `package.json`; add `"test": "vitest run"` and `"test:watch": "vitest"` scripts.
-- [ ] **T002** Add `playwright`, `@playwright/test`, `@axe-core/playwright` as devDependencies in `package.json`; add `"test:e2e": "playwright test"` script and `playwright.config.ts` covering 4 viewports (360 / 768 / 1280 / 2560).
-- [ ] **T003** [P] Configure ESLint with `@typescript-eslint`, `eslint-plugin-react-hooks`, and a custom rule banning inline hex colors in `src/components/**` (warn level OK). Add `"lint": "eslint src --ext .ts,.tsx"` script.
-- [ ] **T004** [P] Add `.editorconfig` enforcing LF line endings to silence the CRLF warnings on every commit.
-- [ ] **T005** Create `vitest.config.ts` at repo root pointing at `tests/unit/**` with `jsdom` environment.
-- [ ] **T006** Create `tests/setup.ts` with React Testing Library jest-dom matchers and `MotionContext` test wrapper helper.
+- [x] **T001** Add `vitest`, `@vitest/ui`, `jsdom` as devDependencies in `package.json`; add `"test": "vitest run"` and `"test:watch": "vitest"` scripts.
+- [x] **T002** Add `playwright`, `@playwright/test`, `@axe-core/playwright` as devDependencies in `package.json`; add `"test:e2e": "playwright test"` script and `playwright.config.ts` covering 4 viewports (360 / 768 / 1280 / 2560).
+- [x] **T003** [P] Configure ESLint with `@typescript-eslint`, `eslint-plugin-react-hooks`, and a custom rule banning inline hex colors in `src/components/**` (warn level OK). Add `"lint": "eslint src --ext .ts,.tsx"` script.
+- [x] **T004** [P] Add `.editorconfig` enforcing LF line endings to silence the CRLF warnings on every commit.
+- [x] **T005** Create `vitest.config.ts` at repo root pointing at `tests/unit/**` with `jsdom` environment.
+- [x] **T006** Create `tests/setup.ts` with React Testing Library jest-dom matchers and `MotionContext` test wrapper helper.
 
 ## Phase B — Foundational tests (block Phase 3 acceptance)
 
-- [ ] **T007** Create `tests/unit/data.shape.test.ts` asserting:
+- [x] **T007** Create `tests/unit/data.shape.test.ts` asserting:
   - `profile` matches schema C1 in `contracts/data-contracts.md`
   - `capabilities` length === 6 with locked id set
   - `projects` length ∈ [3,4]; no accent shared by > 2 entries
@@ -74,8 +96,8 @@ None at strict-checklist level. Phase 1 + Phase 2 + UI tune + Bricolage typograp
   - `writing` length ≥ 3
   - `contact.primaryCta.href` and `secondaryCta.href` resolve to `SECTION_IDS`
   - `INV-3` capability id set === AgentNodeGraph layout id set (when graph is reattached in T015)
-- [ ] **T008** [P] Create `tests/unit/usePerformanceMode.test.ts` covering: initial state with reduced-motion; FPS probe downgrade path; webgl detection branch.
-- [ ] **T009** [P] Create `tests/unit/useReducedMotion.test.ts` covering: initial value matches `matchMedia`; updates on `change` event.
+- [x] **T008** [P] Create `tests/unit/usePerformanceMode.test.ts` covering: initial state with reduced-motion; FPS probe downgrade path; webgl detection branch.
+- [x] **T009** [P] Create `tests/unit/useReducedMotion.test.ts` covering: initial value matches `matchMedia`; updates on `change` event.
 
 ---
 
@@ -87,7 +109,7 @@ Maps to spec §3 FR-031 / FR-042 / FR-180 / FR-181 / FR-182 and plan.md Phase 3 
 
 - [x] **T010** [US2] In `src/components/sections/FeaturedProjects.tsx`, add a second hover layer per FR-180: on `group-hover`, the inner content (Designed paragraph + footer pattern strip) shifts y -2px with stagger; the accent dot or category tag glows independently. Keep the existing border/translate as Layer 1.
 - [x] **T011** [P] [US2] Add `motion-safe:` Tailwind variants on the new hover layer so reduced-motion users get only the border glow (FR-082).
-- [ ] **T012** [US2] Update `tests/e2e/smoke.spec.ts` to assert the project card on `mouseover` produces both layers (Layer 1: shadow-glow class applied; Layer 2: inner translate via getComputedStyle).
+- [x] **T012** [US2] Update `tests/e2e/smoke.spec.ts` to assert the project card on `mouseover` produces both layers (Layer 1: shadow-glow class applied; Layer 2: inner translate via getComputedStyle).
 
 ### Capability tooltip / hover detail (US2)
 
@@ -113,7 +135,7 @@ Maps to spec §3 FR-031 / FR-042 / FR-180 / FR-181 / FR-182 and plan.md Phase 3 
 
 ### Phase 3 acceptance verification
 
-- [ ] **T020** [US2] Add `tests/e2e/responsive.spec.ts` running smoke checks at 360 / 768 / 1280 / 2560 viewports (no overflow, all 7 sections reachable).
+- [x] **T020** [US2] Add `tests/e2e/responsive.spec.ts` running smoke checks at 360 / 768 / 1280 / 2560 viewports (no overflow, all 7 sections reachable).
 - [ ] **T021** Manual sign-off checklist: open dev server, verify each section's hover/tap behaviour at desktop and mobile, screenshot each section, attach in PR description.
 
 ---
@@ -139,7 +161,7 @@ Maps to spec FR-100/101/102/110/111 and SC-006.
 
 ### Performance hygiene
 
-- [ ] **T039** [P] Add `<link rel="preload" as="font" type="font/woff2">` for the latin Bricolage and Inter subsets in `index.html` to eliminate FOUT on first paint.
+- [x] **T039** [P] Add `<link rel="preload" as="font" type="font/woff2">` for the latin Bricolage and Inter subsets in `index.html` to eliminate FOUT on first paint. _(Also self-hosted fonts in `public/fonts/`, removed @fontsource packages.)_
 - [ ] **T040** [P] Set `Cache-Control` headers via Vercel/Netlify config for `/assets/*` (immutable, 1y).
 - [ ] **T041** [P] Verify `og:image` is rendered: create a 1200x630 PNG og card under `public/og.png` and reference in `index.html`. Use a simple typographic composition matching Hero.
 
